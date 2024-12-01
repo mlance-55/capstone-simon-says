@@ -3,10 +3,9 @@
  */
 
  const startButton = document.querySelector(".js-start-button");
- // TODO: Add the missing query selectors:
- const statusSpan = document.querySelector(".js-status"); // Use querySelector() to get the status element
- const heading = document.querySelector(".js-heading"); // Use querySelector() to get the heading element
- const padContainer = document.querySelector(".js-pad-container"); // Use querySelector() to get the heading element
+ const statusSpan = document.querySelector(".js-status"); 
+ const heading = document.querySelector(".js-heading"); 
+ const padContainer = document.querySelector(".js-pad-container");
 
 /**
  * VARIABLES
