@@ -137,6 +137,17 @@ function padHandler(event) {
  */
 function setLevel(level = 1) {
   // TODO: Write your code here.
+  if (level === 1){
+    return 8;
+  } else if (level === 2){
+    return 14;
+  } else if (level === 3){
+    return 20;
+  }else if (level === 4){
+    return 31;
+  } else{
+    return "Please enter level 1, 2, 3, or 4.";
+  }
 }
 
 /**
