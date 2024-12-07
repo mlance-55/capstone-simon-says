@@ -81,7 +81,15 @@ padContainer.addEventListener("click", padHandler);
  */
 function startButtonHandler() {
   // TODO: Write your code here.
-
+  setLevel();
+  roundCount++;
+  if(startButton){
+    startButton.classList.add("hidden");
+  }
+  if(statusSpan){
+    statusSpan.classList.remove("hidden");
+  }
+  playComputerTurn();
   return { startButton, statusSpan };
 }
 
