@@ -256,7 +256,12 @@ sequence.forEach((color, index) => {
  */
  function playComputerTurn() {
   // TODO: Write your code here.
-
+  padContainer.classList.add("unclickable");
+  statusSpan.setText("The computer's turn...");
+  heading.setText("`Round ${roundCount} of ${maxRoundCount}`");
+  let random = getRandomItem(pads);
+  computerSequence.push(random.color);
+  activatePads(computerSequence);
   setTimeout(() => playHumanTurn(roundCount), roundCount * 600 + 1000); // 5
 }
 
