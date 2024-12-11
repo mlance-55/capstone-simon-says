@@ -184,7 +184,7 @@ function getRandomItem(collection) {
  */
 function setText(element, text) {
   // TODO: Write your code here.
-  let element = text.textContent;
+  element.textContent = text;
   return element;
 }
 
