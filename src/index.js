@@ -203,6 +203,11 @@ function setText(element, text) {
 
 function activatePad(color) {
   // TODO: Write your code here.
+let pad = pads.find(color);
+pad.classList.add("activated");
+pad.sound.play();
+setTimeout(pad.classList.remove("activated"), 500);
+  
 }
 
 /**
@@ -221,6 +226,7 @@ function activatePad(color) {
 
 function activatePads(sequence) {
   // TODO: Write your code here.
+
 }
 
 /**
