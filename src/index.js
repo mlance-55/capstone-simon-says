@@ -226,7 +226,9 @@ setTimeout(pad.classList.remove("activated"), 500);
 
 function activatePads(sequence) {
   // TODO: Write your code here.
-
+sequence.forEach((color, index) => {
+  setTimeout(activatePad(color), 600 * index);
+})
 }
 
 /**
