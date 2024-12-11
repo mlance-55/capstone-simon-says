@@ -203,10 +203,12 @@ function setText(element, text) {
 
 function activatePad(color) {
   // TODO: Write your code here.
-let pad = pads.find(color);
+let pad = pads.find(() => pads.color === color);
 pad.classList.add("activated");
 pad.sound.play();
-setTimeout(pad.classList.remove("activated"), 500);
+setTimeout(() =>{
+  pad.classList.remove("activated")
+}, 500);
   
 }
 
@@ -257,8 +259,8 @@ sequence.forEach((color, index) => {
  function playComputerTurn() {
   // TODO: Write your code here.
   padContainer.classList.add("unclickable");
-  statusSpan.setText("The computer's turn...");
-  heading.setText("`Round ${roundCount} of ${maxRoundCount}`");
+  setText(statusSpan, "The computer's turn...");
+  setText(heading, `Round ${roundCount} of ${maxRoundCount}`);
   let random = getRandomItem(pads);
   computerSequence.push(random.color);
   activatePads(computerSequence);
