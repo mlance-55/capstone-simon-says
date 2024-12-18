@@ -256,7 +256,7 @@ sequence.forEach((color, index) => {
  * to the current round (roundCount) multiplied by 600ms which is the duration for each pad in the
  * sequence.
  */
- function playComputerTurn() {
+function playComputerTurn() {
   // TODO: Write your code here.
   padContainer.classList.add("unclickable");
   setText(statusSpan, "The computer's turn...");
@@ -265,7 +265,7 @@ sequence.forEach((color, index) => {
   computerSequence.push(random.color);
   activatePads(computerSequence);
   setTimeout(() => playHumanTurn(roundCount), roundCount * 600 + 1000); // 5
-}
+  }
 
 /**
  * Allows the player to play their turn.
@@ -276,6 +276,13 @@ sequence.forEach((color, index) => {
  */
 function playHumanTurn() {
   // TODO: Write your code here.
+  padContainer.classList.remove("unclickable");
+  let roundLength = computerSequence.length;
+  if(roundLength > 1){
+    setText(statusSpan, `${roundLength} presses remaining.`)
+  } else{
+    setText(statusSpan, `${roundLength} press remaining.`)
+  }
 }
 
 /**
