@@ -203,13 +203,13 @@ function setText(element, text) {
 
 function activatePad(color) {
   // TODO: Write your code here.
-let pad = pads.find(() => pads.color === color);
-pad.classList.add("activated");
+let pad = pads.find((pads) => pads.color === color);
+let selected = pad.selector;
+selected.classList.add("activated");
 pad.sound.play();
 setTimeout(() =>{
-  pad.classList.remove("activated")
-}, 500);
-  
+  selected.classList.remove("activated")
+}, 500);  
 }
 
 /**
