@@ -313,21 +313,16 @@ function playHumanTurn() {
 function checkPress(color) {
   // TODO: Write your code here.
   playerSequence.push(color);
-  index = pads.indexOf(color);
+  let index = pads.indexOf(color);
   let remainingPresses = computerSequence.length - playerSequence.length;
-
+  setText(statusSpan, `${remainingPresses} press remaining.`);
   if(playerSequence[index] !== computerSequence[index]){
     resetGame("Wrong turn! Game over.")
     return;
   }
-
-  if (remainingPresses === 1){
-    setText(statusSpan, `${remainingPresses} press remaining.`);
-  }else if (remainingPresses === 0){
+  if (remainingPresses === 0){
     checkRound();
-  } else{
-    setText(statusSpan,`${remainingPresses} presses remaining.`);
-  }
+  } 
 }
 
 /**
