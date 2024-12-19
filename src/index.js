@@ -115,6 +115,9 @@ function padHandler(event) {
   if (!color) return;
 
   // TODO: Write your code here.
+  let pad = pads.find((pads) => pads.color === color);
+  pad.sound.play();
+  checkPress(color);
   return color;
 }
 
@@ -146,13 +149,17 @@ function padHandler(event) {
 function setLevel(level = 1) {
   // TODO: Write your code here.
   if (level === 1){
-    return 8;
+    maxRoundCount = 8;
+    return maxRoundCount;
   } else if (level === 2){
-    return 14;
+    maxRoundCount = 14;
+    return maxRoundCount;
   } else if (level === 3){
-    return 20;
+    maxRoundCount = 20;
+    return maxRoundCount;
   }else if (level === 4){
-    return 31;
+    maxRoundCount = 31;
+    return maxRoundCount;
   } else{
     return "Please enter level 1, 2, 3, or 4.";
   }
@@ -278,11 +285,7 @@ function playHumanTurn() {
   // TODO: Write your code here.
   padContainer.classList.remove("unclickable");
   let roundLength = computerSequence.length;
-  if(roundLength > 1){
-    setText(statusSpan, `${roundLength} presses remaining.`)
-  } else{
-    setText(statusSpan, `${roundLength} press remaining.`)
-  }
+  setText(statusSpan, `${roundLength} presses remaining.`);
 }
 
 /**
@@ -309,6 +312,22 @@ function playHumanTurn() {
  */
 function checkPress(color) {
   // TODO: Write your code here.
+  playerSequence.push(color);
+  index = pads.indexOf(color);
+  let remainingPresses = computerSequence.length - playerSequence.length;
+
+  if(playerSequence[index] !== computerSequence[index]){
+    resetGame("Wrong turn! Game over.")
+    return;
+  }
+
+  if (remainingPresses === 1){
+    setText(statusSpan, `${remainingPresses} press remaining.`);
+  }else if (remainingPresses === 0){
+    checkRound();
+  } else{
+    setText(statusSpan,`${remainingPresses} presses remaining.`);
+  }
 }
 
 /**
@@ -328,6 +347,17 @@ function checkPress(color) {
 
 function checkRound() {
   // TODO: Write your code here.
+  if(playerSequence.length === maxRoundCount){
+    setText(statusSpan, "Congratulations! Thanks for playing!")
+    resetGame();
+  } else{
+    roundCount++
+    playerSequence = [];
+    setText(statusSpan, "Nice! Keep Going!");
+    setTimeout(() => {
+      playComputerTurn();
+    }, 1000);
+  }
 }
 
 /**
@@ -343,11 +373,11 @@ function resetGame(text) {
   // TODO: Write your code here.
 
   // Uncomment the code below:
-  // alert(text);
-  // setText(heading, "Simon Says");
-  // startButton.classList.remove("hidden");
-  // statusSpan.classList.add("hidden");
-  // padContainer.classList.add("unclickable");
+  alert(text);
+  setText(heading, "Simon Says");
+  startButton.classList.remove("hidden");
+  statusSpan.classList.add("hidden");
+  padContainer.classList.add("unclickable");
 }
 
 /**
